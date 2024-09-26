@@ -5,9 +5,30 @@
  * @format
  */
 
-import { Text } from 'react-native';
+import React from "react";
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
-const App = _ =>
-  <Text>Hello world!!!</Text>;
+import { NavigationContainer } from "@react-navigation/native";
 
-export default App;
+import { AuthProvider, useAuth } from "./src/contexts/auth-context";
+import GuestStack from "./src/navigation/guest-stack";
+import AppStack from "./src/navigation/app-stack";
+
+const AppContent = () => {
+  const { loggedInUser } = useAuth();
+  return (
+    <NavigationContainer>
+      {loggedInUser ? <AppStack /> : <GuestStack />}
+    </NavigationContainer>
+  );
+};
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}
