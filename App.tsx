@@ -5,9 +5,8 @@
  * @format
  */
 
-import { Text } from 'react-native';
+import Welcome from './src/views/welcome';
 
-const App = _ =>
-  <Text>Hello world!!!</Text>;
+const App = _ => <Welcome />;
 
 export default App;
