@@ -3,6 +3,7 @@ import {
   View,
   Text,
   TextInput,
+  Button,
   StyleSheet,
   Image,
   TouchableOpacity,
@@ -13,7 +14,7 @@ import { authentication } from "../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../contexts/auth-context";
 
-const LoginScreen = _ => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
@@ -88,6 +89,16 @@ const LoginScreen = _ => {
           />
         )}
       </TouchableOpacity>
+      <View
+        style={{
+          flexDirection: "row",
+        }}
+      >
+        <Text style={styles.downText}>Don't have an account?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("signup")}>
+          <Text style={styles.signup}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -150,6 +161,15 @@ const styles = StyleSheet.create({
   errorText: {
     color: "red",
     fontSize: 14,
+    marginTop: 10,
+  },
+  signup: {
+    alignSelf: "flex-start",
+    textDecorationLine: "underline",
+    color: "#331ece",
+    fontSize: 16,
+    fontWeight: "500",
+    marginLeft: 5,
     marginTop: 10,
   },
 });

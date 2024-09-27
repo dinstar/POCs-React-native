@@ -20,6 +20,14 @@ const WelcomeScreen = ({ navigation }) => {
       >
         <Text style={st.buttonText}>Sign In</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={st.button}
+        onPress={() => {
+          navigation.navigate("SignUp");
+        }}
+      >
+        <Text style={st.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
