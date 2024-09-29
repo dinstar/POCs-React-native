@@ -18,4 +18,15 @@ buildscript {
     }
 }
 
+tasks.register('copyFiles', Copy) {
+    into(layout.buildDirectory.dir('output'))
+    // Store the configuration into a variable because referencing the project from the task action
+    // is not compatible with the configuration cache.
+    def compileClasspath = configurations.compileClasspath
+    from(compileClasspath)
+    doFirst {
+        println ">> Compilation deps: ${compileClasspath.files.name}"
+    }
+}
+
 apply plugin: "com.facebook.react.rootproject"
