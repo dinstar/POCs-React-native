@@ -1,13 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { Text } from 'react-native';
+import { View, Text } from './react/ui/controls';
 
 const App = _ =>
-  <Text>Hello world!!!</Text>;
+  <View>
+    <Text>Hello world!!!</Text>
+  </View>;
 
 export default App;
